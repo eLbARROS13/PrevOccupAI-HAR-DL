@@ -20,7 +20,9 @@ jobs:
         run: pytest -q --ignore tests/test_feature_reconstruction.py
 
   historical-feature-reconstruction:
-    runs-on: ubuntu-latest
+    # The frozen byte-level feature hash was recovered on Apple Silicon.
+    # Linux matches the numerical feature values but not their exact bytes.
+    runs-on: macos-26
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
