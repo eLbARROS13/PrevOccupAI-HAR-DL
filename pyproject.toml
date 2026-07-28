@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "prevoccupai-har"
-version = "0.1.0"
+version = "1.0.1"
 description = "Leakage-safe foundations for PrevOccupAI muscleBAN HAR experiments"
 requires-python = ">=3.11"
 dependencies = [
