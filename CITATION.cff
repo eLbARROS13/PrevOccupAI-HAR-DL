@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the associated article and this software release."
+title: "PrevOccupAI-HAR-DL"
+type: software
+version: 1.0.0
+date-released: 2026-07-28
+repository-code: "https://github.com/eLbARROS13/PrevOccupAI-HAR-DL"
+url: "https://github.com/eLbARROS13/PrevOccupAI-HAR-DL"
+authors:
+  - family-names: "Barros"
+    given-names: "Gonçalo"
+  - family-names: "Santos"
+    given-names: "Sara"
+  - family-names: "Probst"
+    given-names: "Phillip"
+  - family-names: "Gamboa"
+    given-names: "Hugo"
+keywords:
+  - "human activity recognition"
+  - "accelerometry"
+  - "deep learning"
+  - "occupational health"
+  - "subject-disjoint evaluation"
+

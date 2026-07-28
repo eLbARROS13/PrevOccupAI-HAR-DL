@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "name": "approved_mban_acc_preprocessing_v1",
+  "authoritative": true,
+  "controls_dataset_generation": true,
+  "source": {
+    "repository": "https://github.com/eLbARROS13/PrevOccupAI_mBAN_only",
+    "commit": "87ae0a063396c5c9204469fe740746b2e252ce91",
+    "files": [
+      "raw_data_processor/filters.py",
+      "raw_data_processor/pre_process.py"
+    ]
+  },
+  "notes": [
+    "The author approved the New_MB_QA post-processed segments as the analysis source on 2026-07-16; this transform is the exact recovered feature-pipeline preprocessing applied after QA-approved segmentation.",
+    "The transform must be applied to each governed continuous segment before overlapping windows are extracted.",
+    "Causal zero-state filtering and median zero padding reproduce the recovered implementation and create declared boundary transients.",
+    "Signal-level normalization is disabled; any learned standardization must be fitted on training participants only.",
+    "The first 250 output samples are discarded after this causal transform, matching the recovered feature-extraction caller.",
+    "This configuration controls development dataset generation only; hold-out access remains separately disabled."
+  ],
+  "parameters": {
+    "sampling_rate_hz": 1000,
+    "median_kernel_samples": 11,
+    "butterworth_order": 3,
+    "motion_lowpass_cutoff_hz": 20.0,
+    "gravity_lowpass_cutoff_hz": 0.3,
+    "filter_application": "causal_sos",
+    "median_boundary": "zero_padding",
+    "sos_initial_state": "zeros",
+    "normalization": "none"
+  }
+}

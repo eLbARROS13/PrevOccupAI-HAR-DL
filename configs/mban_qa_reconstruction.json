@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "recovered_mbqa_reconstruction_v0",
+  "authoritative": false,
+  "controls_inclusion": false,
+  "source": {
+    "repository": "https://github.com/novabiosignals/PrevOccupAI_mBAN_QA",
+    "commit": "ac682437abc551d666fc68b77294e9bbdf760e98"
+  },
+  "notes": [
+    "Thresholds are reconstructed from first-party source and have not been validated against the conference inclusion decisions.",
+    "The 1000 Hz sampling rate corrects the recovered flatline call that used 100 Hz.",
+    "The minimum-variance threshold remains unset because the recovered value was derived at import time from private calibration files.",
+    "The configuration must not exclude recordings or authorize training until an authoritative adjudication validates it."
+  ],
+  "thresholds": {
+    "sampling_rate_hz": 1000,
+    "sequence_counter_modulus": 32768,
+    "acceleration_range_g": 8.0,
+    "gravity_m_s2": 9.80665,
+    "missing_fraction_max": 0.01,
+    "out_of_range_fraction_max": 0.0,
+    "flatline_fraction_max": 0.01,
+    "flatline_duration_seconds": 10.0,
+    "flatline_absolute_tolerance_m_s2": 1e-6,
+    "spike_event_fraction_max": 0.01,
+    "spike_amplitude_threshold_m_s2": 4.0,
+    "spike_max_width_samples": 3,
+    "spike_local_std_max_m_s2": 2.0,
+    "spike_local_window_milliseconds": 100.0,
+    "startup_sample_count": 30,
+    "startup_amplitude_threshold_m_s2": 10.0,
+    "saturation_fraction_max": 0.01,
+    "saturation_absolute_tolerance_m_s2": 0.0001,
+    "minimum_variance_m_s2_squared": null
+  }
+}

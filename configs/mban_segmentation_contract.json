@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "approved_postprocessed_mban_segmentation_contract_v1",
+  "authoritative": true,
+  "controls_dataset_generation": true,
+  "automatic_boundary_detection_authorized": false,
+  "source": {
+    "camera_ready_doi": "10.5220/0014403200004070",
+    "recovered_repository": "https://github.com/eLbARROS13/PrevOccupAI_mBAN_only",
+    "recovered_commit": "87ae0a063396c5c9204469fe740746b2e252ce91",
+    "recovered_files": [
+      "raw_data_processor/segment_activities.py",
+      "raw_data_processor/mban_data_segmenter.py",
+      "raw_data_processor/data_segmenter.py"
+    ]
+  },
+  "notes": [
+    "The camera-ready protocol defines ten unique sub-activities, four stair bouts alternating between two labels, 5-second dynamic edge crops, and a 30-second sitting edge crop.",
+    "The author approved New_MB_QA/exported_segments_npy and its QA records as the post-processed analysis source on 2026-07-16.",
+    "The exact approved array and QA hashes are bound by artifacts/data_audit/approved_development_segments.json.",
+    "The recovered branch conflicts with the camera-ready paper on walking smoothing, standing and cabinet segment counts, sitting cropping, and participant-specific stair bout counts.",
+    "Recovered subject-specific thresholds, expected-count truncation, generic fallback labels, automatic file ordering, and unverified axis-dependent detection are not authorized.",
+    "Automatic boundary re-detection remains prohibited; the approved exported arrays control development dataset generation.",
+    "The four external hold-out participants remain sealed until the model and analysis plan are frozen."
+  ],
+  "boundary_evidence": {
+    "initial_sync_jump_count": 10,
+    "between_subtask_stop_seconds": 10,
+    "walking_smoother_samples_reported": 250,
+    "standing_marker_exclusion_seconds_each_side": 5,
+    "signal_boundary_detection_status": "approved_exported_segment_arrays_control",
+    "recovered_eight_bout_stairs_status": "requires_participant_level_confirmation"
+  },
+  "parameters": {
+    "sampling_rate_hz": 1000,
+    "interval_convention": "half_open"
+  },
+  "activity_protocols": {
+    "walking": {
+      "main_label": "walking",
+      "ordered_subactivities": [
+        "walking_slow",
+        "walking_medium",
+        "walking_fast"
+      ],
+      "edge_crop_seconds": 5.0
+    },
+    "stairs": {
+      "main_label": "walking",
+      "ordered_subactivities": [
+        "stairs_up",
+        "stairs_down",
+        "stairs_up",
+        "stairs_down"
+      ],
+      "edge_crop_seconds": 5.0
+    },
+    "cabinets": {
+      "main_label": "standing",
+      "ordered_subactivities": [
+        "cabinets_coffee_tea",
+        "cabinets_shelf_organization"
+      ],
+      "edge_crop_seconds": 5.0
+    },
+    "standing": {
+      "main_label": "standing",
+      "ordered_subactivities": [
+        "standing_still",
+        "standing_conversing"
+      ],
+      "edge_crop_seconds": 5.0
+    },
+    "sitting": {
+      "main_label": "sitting",
+      "ordered_subactivities": [
+        "sitting_desk_work"
+      ],
+      "edge_crop_seconds": 30.0
+    }
+  }
+}

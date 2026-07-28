@@ -1,0 +1,140 @@
+{
+  "authorization_scope": "development_selection_only",
+  "class_labels": [
+    "sitting",
+    "standing",
+    "walking"
+  ],
+  "development_participants": [
+    "P003",
+    "P004",
+    "P005",
+    "P006",
+    "P007",
+    "P008",
+    "P009",
+    "P010",
+    "P011",
+    "P012",
+    "P013",
+    "P014",
+    "P015",
+    "P017",
+    "P019",
+    "P020"
+  ],
+  "files": {
+    "labels": {
+      "relative_name": "labels.npy",
+      "sha256": "0be429db8b15b577e697cac6c608df54445f4e0189101b1c2611b0dece7fcaac",
+      "size_bytes": 402824
+    },
+    "metadata": {
+      "relative_name": "metadata.npy",
+      "sha256": "2308b39dc6a07fad22ec380e1e2636ca44c413066b02929dae5988236252e5d4",
+      "size_bytes": 75908644
+    },
+    "windows": {
+      "relative_name": "windows.npy",
+      "sha256": "1b1c4ff2ed5b39177489f4b3cbaf24732814e73c4e964380e73914d88387c79b",
+      "size_bytes": 3020220128
+    }
+  },
+  "filter_transient_samples_discarded": 250,
+  "holdout_accessed": false,
+  "label_dtype": "int64",
+  "metadata_dtype": [
+    [
+      "participant_id",
+      "<U4"
+    ],
+    [
+      "recording_id",
+      "<U64"
+    ],
+    [
+      "main_label",
+      "<U8"
+    ],
+    [
+      "sub_activity_label",
+      "<U32"
+    ],
+    [
+      "device_stream_id",
+      "<U12"
+    ],
+    [
+      "sensor_side",
+      "<U5"
+    ],
+    [
+      "segment_relative_name",
+      "<U180"
+    ],
+    [
+      "start_sample",
+      "<i8"
+    ],
+    [
+      "end_sample_exclusive",
+      "<i8"
+    ],
+    [
+      "preprocessing_status",
+      "<U64"
+    ],
+    [
+      "quality_status",
+      "<U4"
+    ]
+  ],
+  "payload_sha256": "3977ddb53f5f9f694d7ea234cd4a08249261680d98dfe474e4205febfc4b84ce",
+  "retained_segment_count": 473,
+  "schema_version": 1,
+  "scientific_training_authorized": true,
+  "sealed_holdout_participants": [
+    "P001",
+    "P002",
+    "P016",
+    "P018"
+  ],
+  "source_identity": {
+    "approved_manifest_payload_sha256": "c3952875960e33e75f6a46cad370028e182b9ff09f5ecb569933e72b63d04604",
+    "approved_manifest_sha256": "4ab49bf337ef242d9aa9048970e268650361decb85d1742bbaaa68672e9d9576",
+    "candidate_manifest_sha256": "4e41e21e6e5cec9ac2c7d59ec179e2f1d3019627195ccae31cdce4290cd0ad27",
+    "preprocessing_configuration_sha256": "1bd5abc8347dd052ae9ca019fd026bb42cb0f4c396bb38dff2d55ff86c2d5116",
+    "protocol_sha256": "1eb518a76f42373692020d1710c36d24132b9e96c4e0984c625222612efadab8"
+  },
+  "status": "approved_development_window_store",
+  "window_count": 50337,
+  "window_counts_per_class": {
+    "sitting": 11302,
+    "standing": 23586,
+    "walking": 15449
+  },
+  "window_counts_per_participant": {
+    "P003": 4554,
+    "P004": 5659,
+    "P005": 2659,
+    "P006": 2574,
+    "P007": 2909,
+    "P008": 2928,
+    "P009": 2981,
+    "P010": 3042,
+    "P011": 2859,
+    "P012": 2787,
+    "P013": 2866,
+    "P014": 3000,
+    "P015": 3006,
+    "P017": 2999,
+    "P019": 2968,
+    "P020": 2546
+  },
+  "window_dtype": "float32",
+  "window_shape": [
+    50337,
+    5000,
+    3
+  ]
+}

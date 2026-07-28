@@ -1,0 +1,161 @@
+{
+  "folds": [
+    {
+      "fold_index": 0,
+      "holdout_participants": [
+        "P001",
+        "P002",
+        "P016",
+        "P018"
+      ],
+      "training_participants": [
+        "P003",
+        "P004",
+        "P007",
+        "P008",
+        "P010",
+        "P012",
+        "P013",
+        "P014",
+        "P015",
+        "P017",
+        "P019",
+        "P020"
+      ],
+      "validation_participants": [
+        "P005",
+        "P006",
+        "P009",
+        "P011"
+      ]
+    },
+    {
+      "fold_index": 1,
+      "holdout_participants": [
+        "P001",
+        "P002",
+        "P016",
+        "P018"
+      ],
+      "training_participants": [
+        "P004",
+        "P005",
+        "P006",
+        "P008",
+        "P009",
+        "P010",
+        "P011",
+        "P012",
+        "P013",
+        "P014",
+        "P015",
+        "P017",
+        "P019"
+      ],
+      "validation_participants": [
+        "P003",
+        "P007",
+        "P020"
+      ]
+    },
+    {
+      "fold_index": 2,
+      "holdout_participants": [
+        "P001",
+        "P002",
+        "P016",
+        "P018"
+      ],
+      "training_participants": [
+        "P003",
+        "P004",
+        "P005",
+        "P006",
+        "P007",
+        "P008",
+        "P009",
+        "P011",
+        "P012",
+        "P013",
+        "P015",
+        "P017",
+        "P020"
+      ],
+      "validation_participants": [
+        "P010",
+        "P014",
+        "P019"
+      ]
+    },
+    {
+      "fold_index": 3,
+      "holdout_participants": [
+        "P001",
+        "P002",
+        "P016",
+        "P018"
+      ],
+      "training_participants": [
+        "P003",
+        "P005",
+        "P006",
+        "P007",
+        "P008",
+        "P009",
+        "P010",
+        "P011",
+        "P012",
+        "P014",
+        "P017",
+        "P019",
+        "P020"
+      ],
+      "validation_participants": [
+        "P004",
+        "P013",
+        "P015"
+      ]
+    },
+    {
+      "fold_index": 4,
+      "holdout_participants": [
+        "P001",
+        "P002",
+        "P016",
+        "P018"
+      ],
+      "training_participants": [
+        "P003",
+        "P004",
+        "P005",
+        "P006",
+        "P007",
+        "P009",
+        "P010",
+        "P011",
+        "P013",
+        "P014",
+        "P015",
+        "P019",
+        "P020"
+      ],
+      "validation_participants": [
+        "P008",
+        "P012",
+        "P017"
+      ]
+    }
+  ],
+  "holdout_access_authorized": false,
+  "holdout_accessed": false,
+  "n_splits": 5,
+  "payload_sha256": "63a8bdb99c4921e4f2f518ade8186f4f420f57d3f329ead32006679c228bb408",
+  "protocol_configuration_sha256": "d30276c8ea4579afc00a3767a1a69fd54d2c93947be5ef2c9af592511232b125",
+  "random_seed": 42,
+  "schema_version": 1,
+  "status": "authorized_development_subject_split",
+  "strategy": "fixed_external_holdout_with_subject_disjoint_development_folds",
+  "training_authorization_scope": "development_selection_only",
+  "training_authorized": true,
+  "training_blockers": []
+}

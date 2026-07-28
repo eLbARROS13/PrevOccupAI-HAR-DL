@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "feature_set_id": "mban_acc_tsfel_45_reconstruction_v1",
+  "status": "non_authoritative_reconstruction_only",
+  "authoritative": false,
+  "controls_scientific_feature_generation": false,
+  "source": {
+    "repository": "eLbARROS13/PrevOccupAI_mBAN_only",
+    "commit": "87ae0a063396c5c9204469fe740746b2e252ce91",
+    "source_file": "feature_extractor/cfg_file.json",
+    "source_file_sha256": "7238c89f339887b248091b969c002942c6ce8e5a3550f24ea151d86337369535",
+    "feature_caller_file": "feature_extractor/feature_extractor.py",
+    "feature_caller_file_sha256": "2ae195902e543a53a702882b7c91f3c54e3f21fe525b157f138915b1801bbb1c",
+    "invocation_file": "feature_extractor/feature_extractor_main.py",
+    "invocation_file_sha256": "0d5e5532f312eab44473b83ea85c96931d445ca3b187ff9a1fb20c446ab0a2df",
+    "requirements_file": "requirements.txt",
+    "requirements_file_sha256": "3bfb58b5785db9a46b0d3cb7bbffeeee16ce42acc472e0c570d095c8c12a07ad"
+  },
+  "input": {
+    "sampling_rate_hz": 1000,
+    "window_samples": 5000,
+    "source_axis_names": ["x_ACC", "y_ACC", "z_ACC"],
+    "axis_names": ["acc_0", "acc_1", "acc_2"],
+    "axis_order_verified": false,
+    "window_normalization": "none",
+    "output_column_order": "alphabetical_tsfel_0.1.9"
+  },
+  "runtime": {
+    "required_tsfel_version": "0.1.9",
+    "recovered_numpy_version": "1.26.4",
+    "recovered_scipy_version": "1.11.4",
+    "recovered_pandas_version": "2.1.4",
+    "scientific_runtime_must_match_recovered_versions": true,
+    "validation_with_other_numerical_versions_allowed": true
+  },
+  "validation_reference": {
+    "reference_id": "three_sine_trend_window_v1",
+    "canonical_output_dtype": "little_endian_float64",
+    "exact_runtime_output_sha256": "41163f9f9898df509b359ca30e2200181416eb691fe0a4c0c892c87a9b7e343b"
+  },
+  "expected_feature_count_per_axis": 15,
+  "expected_total_feature_count": 45,
+  "ordered_features": [
+    {"domain": "spectral", "name": "Human range energy", "function": "human_range_energy", "uses_sampling_rate": true},
+    {"domain": "spectral", "name": "Max power spectrum", "function": "max_power_spectrum", "uses_sampling_rate": true},
+    {"domain": "spectral", "name": "Median frequency", "function": "median_frequency", "uses_sampling_rate": true},
+    {"domain": "spectral", "name": "Power bandwidth", "function": "power_bandwidth", "uses_sampling_rate": true},
+    {"domain": "spectral", "name": "Spectral entropy", "function": "spectral_entropy", "uses_sampling_rate": true},
+    {"domain": "statistical", "name": "Interquartile range", "function": "interq_range", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Max", "function": "calc_max", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Mean", "function": "calc_mean", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Median", "function": "calc_median", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Min", "function": "calc_min", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Root mean square", "function": "rms", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Skewness", "function": "skewness", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Standard deviation", "function": "calc_std", "uses_sampling_rate": false},
+    {"domain": "statistical", "name": "Variance", "function": "calc_var", "uses_sampling_rate": false},
+    {"domain": "temporal", "name": "Mean absolute diff", "function": "mean_abs_diff", "uses_sampling_rate": false}
+  ]
+}

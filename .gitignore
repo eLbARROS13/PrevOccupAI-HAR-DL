@@ -1,0 +1,23 @@
+.DS_Store
+.idea/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Participant data and learned artifacts
+acquisitions/
+data/
+*.npy
+*.npz
+*.joblib
+*.pkl
+
+# Generated run outputs
+artifacts/models/
+artifacts/predictions/
+artifacts/windows/*/*.npy
+

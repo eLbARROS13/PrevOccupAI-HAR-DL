@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "disabled_pending_data_readiness",
+  "evaluation_enabled": false,
+  "maximum_access_count": 1,
+  "required_purpose": "final_external_evaluation",
+  "holdout_participants": ["P001", "P002", "P016", "P018"],
+  "authorization_id": null,
+  "protocol_configuration_sha256": null,
+  "model_freeze_manifest_sha256": null,
+  "statistical_analysis_plan_sha256": null
+}

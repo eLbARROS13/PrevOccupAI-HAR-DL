@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "dataset_name": "PrevOccupAI muscleBAN HAR",
+  "source_status": "public_release_method_configuration",
+  "raw_data_root": "acquisitions",
+  "participant_id_pattern": "^P[0-9]{3}$",
+  "development_participants": [
+    "P003",
+    "P004",
+    "P005",
+    "P006",
+    "P007",
+    "P008",
+    "P009",
+    "P010",
+    "P011",
+    "P012",
+    "P013",
+    "P014",
+    "P015",
+    "P017",
+    "P019",
+    "P020"
+  ],
+  "holdout_participants": ["P001", "P002", "P016", "P018"],
+  "required_activity_directory_bases": [
+    "sitting",
+    "standing",
+    "walking",
+    "stairs",
+    "cabinets"
+  ],
+  "main_labels": ["sitting", "standing", "walking"],
+  "muscleban_filename_pattern": "^opensignals_[0-9A-F]{12}_.+[.]txt$",
+  "muscleban_sampling_rate_hz": 1000,
+  "accelerometer_channels": 3,
+  "window": {
+    "duration_seconds": 5.0,
+    "overlap_fraction": 0.5,
+    "expected_samples": 5000
+  },
+  "quality_assessment_manifest": "artifacts/data_audit/approved_development_segments.json",
+  "segmentation_manifest": "artifacts/data_audit/approved_development_segments.json",
+  "device_to_side_mapping": "configs/mban_device_to_side.example.json",
+  "signal_preprocessing_configuration": "configs/mban_signal_preprocessing.json",
+  "segmentation_contract_configuration": "configs/mban_segmentation_contract.json",
+  "training_authorized": true,
+  "training_authorization_scope": "development_selection_only",
+  "holdout_access_authorized": false,
+  "training_blockers": []
+}

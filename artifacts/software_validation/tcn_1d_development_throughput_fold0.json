@@ -1,0 +1,20 @@
+{
+  "elapsed_seconds": 9.00471995800035,
+  "estimated_training_epoch_seconds": 2209.758277693286,
+  "experiment_id": "tcn_1d_single_stream_v1",
+  "fold_index": 0,
+  "holdout_accessed": false,
+  "measured_batches": 5,
+  "measured_examples": 160,
+  "model_configuration_sha256": "1a9af7a4e3f4937fdd5ffb4f66996e317526b8c5784999eedc86b5bc563aa8ba",
+  "plan_sha256": "42e285615cf74e2050caa53696b6bbf31de6cf1f47ade00402c6062d323baab5",
+  "predictions_created": false,
+  "random_seed": 1103,
+  "schema_version": 1,
+  "scientific_result": false,
+  "standardizer_fit_seconds": 5.0041277919954155,
+  "status": "development_compute_feasibility_only",
+  "torch_threads": 8,
+  "training_window_count": 39264,
+  "window_store_index_sha256": "aa59e58d3316b932e6d63f5721b9444013c70969161675c84947af1b5e1044fc"
+}

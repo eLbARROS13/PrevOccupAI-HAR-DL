@@ -1,0 +1,37 @@
+{
+  "created_at_utc": "2026-07-16T01:31:43Z",
+  "device": "cpu",
+  "experiment_id": "tcn_1d_100hz_single_stream_v1",
+  "holdout_accessed": false,
+  "input_kind": "synthetic_zeros",
+  "measurement": {
+    "input_shape": [
+      1,
+      3,
+      500
+    ],
+    "latency": {
+      "first_quartile_ms": 0.586073,
+      "maximum_ms": 1.050708,
+      "median_ms": 0.624271,
+      "minimum_ms": 0.401583,
+      "third_quartile_ms": 0.70475
+    },
+    "parameter_count": 2307,
+    "serialized_state_dict_bytes": 28411,
+    "timed_iterations": 50,
+    "trainable_parameter_count": 2307,
+    "warmup_iterations": 10
+  },
+  "model_configuration_sha256": "6aa96846a4cd6933748b77c6c18398cd74ecce0f3e063ae33fe5d7b85a5f7734",
+  "platform_machine": "arm64",
+  "platform_release": "25.5.0",
+  "platform_system": "Darwin",
+  "python_version": "3.12.2",
+  "random_seed": 1103,
+  "schema_version": 1,
+  "scientific_result": false,
+  "source_revision": "unversioned_workspace_software_test",
+  "torch_num_threads": 8,
+  "torch_version": "2.7.1"
+}

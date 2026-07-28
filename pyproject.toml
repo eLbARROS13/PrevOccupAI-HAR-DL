@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prevoccupai-har"
+version = "0.1.0"
+description = "Leakage-safe foundations for PrevOccupAI muscleBAN HAR experiments"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0,<3",
+  "scipy>=1.14,<2",
+]
+
+[project.optional-dependencies]
+dl = [
+  "torch==2.7.1",
+]
+figures = [
+  "matplotlib>=3.9,<4",
+]
+classical = [
+  "scikit-learn>=1.6,<2",
+]
+features = [
+  "tsfel==0.1.9",
+]
+test = [
+  "pytest>=8,<10",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+pythonpath = ["src"]
+testpaths = ["tests"]

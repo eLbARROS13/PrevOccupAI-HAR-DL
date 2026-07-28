@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "experiment_id": "rf_fold_local_synthetic_smoke_v1",
+  "status": "synthetic_validation_only",
+  "research_question": "Does the grouped, fold-local Random Forest implementation execute end to end without participant or hold-out leakage?",
+  "protocol_config": null,
+  "governance": {
+    "scientific_training_authorized_by_this_config": false,
+    "permitted_current_use": "generated_feature_matrix_validation",
+    "development_evaluation_requires_protocol_training_authorized": true,
+    "holdout_evaluation_supported": false
+  },
+  "input": {
+    "sensor": "generated_features_only",
+    "side": "synthetic_not_applicable",
+    "sampling_rate_hz": null,
+    "window_samples": null,
+    "overlap_fraction": null,
+    "feature_matrix": "deterministically_generated_numeric_features",
+    "expected_candidate_feature_count": 12,
+    "window_level_normalization": "none"
+  },
+  "fold_local_balancing": {
+    "strategy": "per_participant_per_subactivity_training_fold_only",
+    "main_class_target_rule": "minimum_feasible_total_across_declared_main_classes",
+    "sampling": "without_replacement_fixed_seed",
+    "inner_validation_distribution": "unchanged",
+    "outer_validation_distribution": "unchanged"
+  },
+  "fold_local_pipeline": {
+    "variance_threshold": 0.1,
+    "absolute_correlation_threshold": 0.9,
+    "anova_selected_feature_count": 5,
+    "classifier": "RandomForestClassifier",
+    "hyperparameter_grid": {
+      "criterion": ["gini"],
+      "n_estimators": [20],
+      "max_depth": [5]
+    },
+    "inner_group_folds": 2,
+    "inner_selection_metric": "accuracy",
+    "n_jobs": 1
+  },
+  "published_method_target": null,
+  "random_seed": 42,
+  "test_access_policy": "unsupported"
+}

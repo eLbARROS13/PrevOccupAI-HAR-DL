@@ -1,0 +1,34 @@
+# Exact effective package versions for the 2026-07-16 development grid.
+#
+# This lock records the Python packages imported by the CNN/TCN/RF and reporting
+# paths plus their direct runtime dependencies. It does not include platform-
+# specific wheel hashes and is paired with
+# artifacts/provenance/development_environment_lock_v1.json.
+
+contourpy==1.3.3
+cycler==0.12.1
+filelock==3.29.7
+fonttools==4.62.0
+fsspec==2026.6.0
+jinja2==3.1.6
+joblib==1.5.3
+kiwisolver==1.5.0
+markupsafe==3.0.3
+matplotlib==3.10.8
+mpmath==1.3.0
+networkx==3.6.1
+numpy==2.1.1
+packaging==25.0
+pandas==2.2.2
+pillow==10.2.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+pytz==2024.1
+scikit-learn==1.9.0
+scipy==1.14.1
+six==1.16.0
+sympy==1.14.0
+threadpoolctl==3.6.0
+torch==2.7.1
+typing-extensions==4.16.0
+tzdata==2024.1

@@ -1,0 +1,6 @@
+# Recovered HAR-focused feature-extraction runtime at commit
+# 87ae0a063396c5c9204469fe740746b2e252ce91.
+numpy==1.26.4
+pandas==2.1.4
+scipy==1.11.4
+tsfel==0.1.9

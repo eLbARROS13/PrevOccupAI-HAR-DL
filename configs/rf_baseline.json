@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "experiment_id": "rf_tsfel_fold_local_reconstruction_v1",
+  "status": "frozen_for_development",
+  "research_question": "Can the camera-ready handcrafted-feature Random Forest baseline be independently reproduced under the fixed subject-disjoint protocol?",
+  "protocol_config": "configs/mban_protocol.json",
+  "governance": {
+    "scientific_training_authorized_by_this_config": false,
+    "permitted_current_use": "authorized_development_selection_and_synthetic_feature_matrix_validation",
+    "development_evaluation_requires_protocol_training_authorized": true,
+    "holdout_evaluation_supported": false
+  },
+  "input": {
+    "sensor": "muscleBAN accelerometer",
+    "side": "pooled_side_agnostic_with_side_metadata_retained",
+    "sampling_rate_hz": 1000,
+    "window_samples": 5000,
+    "overlap_fraction": 0.5,
+    "feature_matrix": "pre_extracted_tsfel_features_with_path_free_row_provenance",
+    "expected_candidate_feature_count": 45,
+    "window_level_normalization": "none"
+  },
+  "fold_local_balancing": {
+    "strategy": "per_participant_per_subactivity_training_fold_only",
+    "main_class_target_rule": "minimum_feasible_total_across_declared_main_classes",
+    "sampling": "without_replacement_fixed_seed",
+    "inner_validation_distribution": "unchanged",
+    "outer_validation_distribution": "unchanged"
+  },
+  "fold_local_pipeline": {
+    "variance_threshold": 0.1,
+    "absolute_correlation_threshold": 0.9,
+    "anova_selected_feature_count": 25,
+    "classifier": "RandomForestClassifier",
+    "hyperparameter_grid": {
+      "criterion": ["gini", "entropy"],
+      "n_estimators": [50, 100, 500, 1000],
+      "max_depth": [2, 5, 10, 20, 30]
+    },
+    "inner_group_folds": 2,
+    "inner_selection_metric": "accuracy",
+    "n_jobs": 1
+  },
+  "published_method_target": {
+    "candidate_features": 45,
+    "features_per_axis": 15,
+    "selection_steps": [
+      "variance_filter",
+      "correlation_filter",
+      "training_only_anova_f_test"
+    ],
+    "selected_feature_count": 25,
+    "classifier": "RandomForestClassifier"
+  },
+  "quoted_not_reproduced_results": {
+    "nested_cv_accuracy_percent_mean": 87.53,
+    "nested_cv_accuracy_percentage_point_sd": 1.55,
+    "holdout_accuracy_percent": 86.58
+  },
+  "random_seed": 42,
+  "test_access_policy": "once_after_freeze"
+}

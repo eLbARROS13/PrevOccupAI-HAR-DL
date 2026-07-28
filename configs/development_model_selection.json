@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "plan_id": "cnn_tcn_100hz_subject_disjoint_selection_v1",
+  "status": "authorized_development_selection",
+  "purpose": "development_selection",
+  "protocol_configuration": "configs/mban_protocol.json",
+  "split_manifest": "artifacts/data_audit/subject_split_manifest_authorized.json",
+  "window_store_index": "artifacts/windows/approved_development_v1/index.json",
+  "split_random_seed": 42,
+  "fold_count": 5,
+  "statistical_analysis_plan": "docs/statistical_analysis_plan.md",
+  "candidate_models": [
+    {
+      "experiment_id": "cnn_1d_100hz_single_stream_v1",
+      "role": "reference",
+      "model_configuration": "configs/cnn_1d.json",
+      "complexity_profile": "artifacts/software_validation/cnn_1d_100hz_development_complexity_cpu.json"
+    },
+    {
+      "experiment_id": "tcn_1d_100hz_single_stream_v1",
+      "role": "challenger",
+      "model_configuration": "configs/tcn_1d.json",
+      "complexity_profile": "artifacts/software_validation/tcn_1d_100hz_compact_development_complexity_cpu.json"
+    }
+  ],
+  "random_seeds": [1103, 2207, 3301, 4409, 5519],
+  "analysis_settings": {
+    "calibration_bin_count": 15,
+    "expected_step_size_samples": 2500,
+    "short_run_max_windows": 1
+  },
+  "selection_rule": {
+    "primary_metric": "participant_macro_f1",
+    "supporting_metric": "participant_balanced_accuracy",
+    "challenger_minimum_primary_gain": 0.01,
+    "challenger_maximum_supporting_loss": 0.005,
+    "minimum_nonnegative_seed_fraction": 0.6
+  }
+}

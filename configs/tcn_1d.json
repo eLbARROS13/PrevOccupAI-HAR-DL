@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "experiment_id": "tcn_1d_100hz_single_stream_v1",
+  "status": "frozen_for_development",
+  "protocol_config": "configs/mban_protocol.json",
+  "research_question": "Does a compact residual dilated temporal model improve development-participant performance relative to the compact CNN without disproportionate capacity?",
+  "governance": {
+    "scientific_training_authorized_by_this_config": false,
+    "permitted_current_use": "authorized_development_selection_and_synthetic_software_validation",
+    "development_selection_requires_protocol_training_authorized": true,
+    "holdout_evaluation_supported": false
+  },
+  "input": {
+    "shape_channels_first": [3, 500],
+    "class_labels": ["sitting", "standing", "walking"],
+    "sensor": "muscleBAN accelerometer",
+    "side": "pooled_side_agnostic_with_side_metadata_retained",
+    "preprocessing": "governed_physical_preprocessing_then_100hz_decimation_then_train_only_standardization",
+    "temporal_downsampling": {
+      "method": "stride_after_20_hz_lowpass",
+      "source_sampling_rate_hz": 1000,
+      "model_sampling_rate_hz": 100,
+      "factor": 10,
+      "anti_alias_basis": "approved causal third-order 20 Hz low-pass precedes decimation"
+    }
+  },
+  "architecture": {
+    "type": "compact_dilated_tcn",
+    "channels": 6,
+    "stem_kernel_size": 9,
+    "stem_stride": 2,
+    "kernel_size": 7,
+    "dilations": [1, 2, 4, 8],
+    "convolutions_per_block": 2,
+    "depthwise_separable": false,
+    "batch_normalization": true,
+    "dropout_probability": 0.2,
+    "padding": "symmetric_same",
+    "residual_connections": true,
+    "initialization": "pytorch_module_defaults_seeded",
+    "global_pooling": true,
+    "output_classes": 3
+  },
+  "optimization": {
+    "loss": "cross_entropy",
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 128,
+    "maximum_epochs": 100,
+    "early_stopping_patience": 12,
+    "early_stopping_minimum_delta": 0.001,
+    "model_selection_metric": "macro_f1",
+    "model_selection_mode": "maximize"
+  },
+  "random_seeds": [1103, 2207, 3301, 4409, 5519],
+  "primary_metrics": ["macro_f1", "balanced_accuracy"],
+  "secondary_metrics": [
+    "accuracy",
+    "weighted_f1",
+    "classwise_precision_recall_f1",
+    "per_subject_metrics",
+    "parameter_count",
+    "serialized_model_size",
+    "inference_latency"
+  ],
+  "test_access_policy": "once_after_freeze"
+}
