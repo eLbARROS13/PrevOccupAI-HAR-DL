@@ -88,8 +88,6 @@ and the foundations on which this work builds.
 
 Relevant first-party repositories are:
 
-- [PrevOccupAI_Dataset](https://github.com/p-probst/PrevOccupAI_Dataset)
-  — original multimodal dataset and early deep-learning foundations;
 - [PrevOccupAI_mBAN_HAR](https://github.com/novabiosignals/PrevOccupAI_mBAN_HAR)
   — prior classical muscleBAN HAR pipeline;
 - [PrevOccupAI_mBAN_QA](https://github.com/novabiosignals/PrevOccupAI_mBAN_QA)
@@ -107,4 +105,3 @@ Because the earlier first-party repositories do not currently declare a
 machine-readable licence and formal reuse terms have not yet been agreed by all
 contributors, no open-source licence is granted by this repository. Contact the
 study authors before redistributing or adapting the code.
-
