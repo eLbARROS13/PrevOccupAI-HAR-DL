@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  public-suite:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -17,4 +17,23 @@ jobs:
       - name: Install package and test dependencies
         run: python -m pip install -e '.[test,dl,figures,classical]'
       - name: Run public regression suite
-        run: pytest -q
+        run: pytest -q --ignore tests/test_feature_reconstruction.py
+
+  historical-feature-reconstruction:
+    # The frozen byte-level feature hash was recovered on Apple Silicon.
+    # Linux matches the numerical feature values but not their exact bytes.
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install exact historical TSFEL environment
+        run: |
+          python -m pip install -r requirements/tsfel_reconstruction_exact.txt
+          python -m pip install -e . --no-deps
+          python -m pip install 'pytest>=8,<10'
+      - name: Run historical feature-reconstruction tests
+        run: pytest -q tests/test_feature_reconstruction.py

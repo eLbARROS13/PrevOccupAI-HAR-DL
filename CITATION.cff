@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, cite the associated article and this software release."
 title: "PrevOccupAI-HAR-DL"
 type: software
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-07-28
 repository-code: "https://github.com/eLbARROS13/PrevOccupAI-HAR-DL"
 url: "https://github.com/eLbARROS13/PrevOccupAI-HAR-DL"
@@ -21,4 +21,3 @@ keywords:
   - "deep learning"
   - "occupational health"
   - "subject-disjoint evaluation"
-
