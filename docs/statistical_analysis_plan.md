@@ -25,6 +25,8 @@ The evaluation code now builds fixed-label confusion matrices from aligned retai
 
 Participant-grouped percentile bootstrap intervals, exact paired sign-flip enumeration, and Holm adjustment are implemented and deterministic under a declared seed. The bootstrap is explicitly labelled `highly_unstable_descriptive_interval` when fewer than five participants are available. These are software implementations of this plan, not permission to analyse the hold-out cohort and not evidence that the methods are confirmatory.
 
+Post-review verification did not alter the immutable final-evaluation artifact: its original 10,000-draw bootstrap remains part of the audit history. Because four participants yield only $4^4=256$ ordered nonparametric bootstrap resamples, the manuscript reports the corresponding exhaustive percentile interval calculated from the retained participant-level differences. The public implementation exposes this deterministic calculation as `exact_participant_bootstrap_mean_interval`; it does not read predictions or authorize reuse of the holdout.
+
 `configs/holdout_evaluation_policy.json` remains disabled until the five CNN refits, RF refit, strict model reloads, immutable final-stage source manifest, and frozen-model manifest have all passed verification. Authorization must bind the protocol configuration, frozen-model manifest, and this statistical analysis plan by SHA-256; match the four protocol hold-out participants; and provide one authorization identifier. The access ledger is written exclusively before any hold-out array or feature value is read. An existing ledger blocks reuse even if evaluation fails after the claim; failures require explicit human adjudication and cannot trigger an automatic retry.
 
 ## Endpoints and estimands

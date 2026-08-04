@@ -11,6 +11,7 @@ from prevoccupai_har.evaluation import (
 )
 from prevoccupai_har.statistical_evaluation import (
     compare_paired_participant_metrics,
+    exact_participant_bootstrap_mean_interval,
     exact_paired_sign_flip_p_value,
     holm_adjust,
     participant_bootstrap_mean_interval,
@@ -76,6 +77,30 @@ def test_participant_bootstrap_is_deterministic_and_flags_four_subjects() -> Non
     assert first.estimate == pytest.approx(0.86)
     assert first.lower <= first.estimate <= first.upper
     assert first.interpretation == "highly_unstable_descriptive_interval"
+
+
+def test_exact_participant_bootstrap_enumerates_four_subject_space() -> None:
+    differences = {
+        "P001": 0.0484068213294534,
+        "P002": 0.035962782034193896,
+        "P016": 0.09138100925567505,
+        "P018": 0.03318549747580546,
+    }
+
+    interval = exact_participant_bootstrap_mean_interval(differences)
+
+    assert interval.estimate == pytest.approx(0.05223402752378195)
+    assert interval.lower == pytest.approx(0.03457413975499968)
+    assert interval.upper == pytest.approx(0.07752645245030476)
+    assert interval.enumeration_count == 256
+    assert interval.unique_resampled_mean_count == 35
+
+
+def test_exact_participant_bootstrap_rejects_large_space() -> None:
+    values = {f"P{index:03d}": float(index) for index in range(10)}
+
+    with pytest.raises(ValueError, match="exceed the enumeration limit"):
+        exact_participant_bootstrap_mean_interval(values)
 
 
 def test_paired_comparison_uses_exact_same_participants() -> None:

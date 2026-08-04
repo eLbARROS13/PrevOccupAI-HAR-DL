@@ -28,6 +28,24 @@ class ParticipantBootstrapInterval:
 
 
 @dataclass(frozen=True)
+class ExactParticipantBootstrapInterval:
+    """Percentile interval from all ordered participant bootstrap resamples."""
+
+    estimate: float
+    lower: float
+    upper: float
+    confidence_level: float
+    participant_count: int
+    enumeration_count: int
+    unique_resampled_mean_count: int
+    interpretation: str
+
+    def as_dict(self) -> dict[str, object]:
+        """Return a JSON-compatible representation."""
+        return asdict(self)
+
+
+@dataclass(frozen=True)
 class PairedParticipantComparison:
     """Participant-paired model difference with descriptive uncertainty."""
 
@@ -96,6 +114,55 @@ def participant_bootstrap_mean_interval(
         resample_count=resample_count,
         random_seed=random_seed,
         interpretation=interpretation,
+    )
+
+
+def exact_participant_bootstrap_mean_interval(
+    values: Mapping[str, float],
+    *,
+    confidence_level: float = 0.95,
+    maximum_enumerations: int = 1_000_000,
+) -> ExactParticipantBootstrapInterval:
+    """Enumerate every ordered participant resample for a mean interval.
+
+    For ``n`` participants, the nonparametric bootstrap has ``n**n`` ordered
+    resamples of size ``n``. Exhaustive enumeration avoids Monte Carlo error
+    when that finite space is small, as in the four-participant final comparison.
+    """
+    _, numeric_values = _finite_participant_values(values)
+    if not 0 < confidence_level < 1:
+        raise ValueError("Confidence level must be between zero and one")
+    if maximum_enumerations <= 0:
+        raise ValueError("Maximum enumerations must be positive")
+    participant_count = int(numeric_values.size)
+    enumeration_count = participant_count**participant_count
+    if enumeration_count > maximum_enumerations:
+        raise ValueError(
+            "Exact participant bootstrap would exceed the enumeration limit: "
+            f"{enumeration_count} > {maximum_enumerations}"
+        )
+    resampled_means = np.fromiter(
+        (
+            float(numeric_values[np.asarray(indices, dtype=int)].mean())
+            for indices in product(range(participant_count), repeat=participant_count)
+        ),
+        dtype=float,
+        count=enumeration_count,
+    )
+    tail_probability = (1 - confidence_level) / 2
+    lower, upper = np.quantile(
+        resampled_means,
+        [tail_probability, 1 - tail_probability],
+    )
+    return ExactParticipantBootstrapInterval(
+        estimate=float(numeric_values.mean()),
+        lower=float(lower),
+        upper=float(upper),
+        confidence_level=confidence_level,
+        participant_count=participant_count,
+        enumeration_count=enumeration_count,
+        unique_resampled_mean_count=int(np.unique(resampled_means).size),
+        interpretation="exhaustive_participant_bootstrap_descriptive_interval",
     )
 
 

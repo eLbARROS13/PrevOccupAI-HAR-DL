@@ -74,9 +74,11 @@ from .segmentation import (
 )
 from .splits import SubjectPartition, build_validation_folds
 from .statistical_evaluation import (
+    ExactParticipantBootstrapInterval,
     PairedParticipantComparison,
     ParticipantBootstrapInterval,
     compare_paired_participant_metrics,
+    exact_participant_bootstrap_mean_interval,
     exact_paired_sign_flip_p_value,
     holm_adjust,
     participant_bootstrap_mean_interval,
@@ -93,6 +95,7 @@ __all__ = [
     "ActivitySegmentationProtocol",
     "AxisQualityReport",
     "CalibrationBin",
+    "ExactParticipantBootstrapInterval",
     "CalibrationEvaluation",
     "CalibrationFitPurpose",
     "CalibrationFitScope",
@@ -142,6 +145,7 @@ __all__ = [
     "evaluate_predictions",
     "evaluate_temporal_predictions",
     "evaluate_calibration",
+    "exact_participant_bootstrap_mean_interval",
     "exact_paired_sign_flip_p_value",
     "holm_adjust",
     "fit_temperature_scaling",
